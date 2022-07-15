@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ButtonGroup , ButtonToolbar , Button, Form} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const ItemCount = ({ stock }) => {
     const [count, setCount] = useState(0);
@@ -16,9 +16,10 @@ const ItemCount = ({ stock }) => {
     }
     return (
         <>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center input-group">
                 <Button onClick={() => updateCount("-")}>-</Button>
                 <p style={{fontSize:20, width:20, textAlign:"center"}}>{count}</p>
+                <input type="number" value={count} ></input>
                 <Button onClick={() => updateCount("+")}>+</Button>
                 <Button onClick={() => addCart()} type="button" disabled={count === "" || count === 0}>Agregar al carrito!</Button>
            

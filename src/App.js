@@ -9,10 +9,8 @@ import ItemListContainer from './components/ItemListContainer';
 function App() {
   return (<>
           <NavBar />
-          <ItemListContainer gretting="Producto 1" />
+          <ItemListContainer />
           </>
   )
 }
-
 export default App;
-

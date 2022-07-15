@@ -1,0 +1,63 @@
+[
+    {   
+        "title": "Pokemon Azul",
+        "price": 300,
+        "image": "img/pokemon-azul.jpg",
+        "stock": 10
+        
+    },
+    {
+        "title": "Pokemon Oro",
+        "price": 400,
+        "image": "img/pokemon-oro.jpg",
+        "stock": 20
+    },
+    {
+        "title": "Pokemon Plata",
+        "price": 500,
+        "image": "img/pokemon-plata.jpg",
+        "stock": 10
+    },
+    {
+        "title": "Pokemon Rojo",
+        "price": 600,
+        "image": "img/pokemon-rojo.jpg",
+        "stock": 15
+    },
+    {
+        "title": "Pokemon Verde",
+        "price": 700,
+        "image": "img/pokemon-verde.jpg",
+        "stock": 5
+    },
+    {
+        "title": "Sonic",
+        "price": 800,
+        "image": "img/sonic.jpg",
+        "stock": 10
+    },
+    {
+        "title": "Donkey Kong Country",
+        "price": 600,
+        "image": "img/donkey_kong.jpg",
+        "stock": 20
+    },
+    {
+        "title": "Wario Land",
+        "price": 400,
+        "image": "img/warioland.jpg",
+        "stock": 10
+    },
+    {
+        "title": "Super Mario Land",
+        "price": 700,
+        "image": "img/supermario.jpg",
+        "stock": 10
+    },
+    {
+        "title": "Metroid",
+        "price": 500,
+        "image": "img/metroid.jpg",
+        "stock": 10
+    }
+  ]

@@ -7,7 +7,7 @@ import CartWidget from './CartWidget';
 
 const NavBar = () => {
     return (
-        <Navbar bg="warning" variant="light">
+        <Navbar bg="warning" variant="light" style={{marginBottom:"20px"}}>
         <Container>
           <Navbar.Brand href="#home" >
           <img
