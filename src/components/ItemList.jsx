@@ -5,7 +5,7 @@ const ItemList = ({ items }) => {
     <div className="container ">
       <div className="row ">
         {items.map((item) => (
-          <div className="col-sm d-flex justify-content-center">
+          <div key={item.id} className="col-sm d-flex justify-content-center">
             <Item item={item} />
           </div>
         ))}
