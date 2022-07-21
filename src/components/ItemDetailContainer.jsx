@@ -1,19 +1,25 @@
 import api from "../data/api.json"
-import ItemList from "./ItemList";
-import api2 from "../data/api.json"
 import {useState , useEffect} from "react"
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
-
-const ItemDetailContainer = ({item}) => {
+const ItemDetailContainer = () => {
+  const { id } = useParams();
     const [items, setItems] = useState([]);
     const promise = new Promise((resolve) => {
-      setTimeout(() => resolve(api2), 2000);
+      setTimeout(() => resolve(api), 2000);
     });
   
     useEffect(() => {
-      promise.then((res) => setItems(api2));
-    }, []);
+      promise.then((res) => {
+        const products = res;
+        if (id) {
+          setItems(products.filter((product) => product.id == id));
+        } else {
+          setItems(products);
+        }
+      });
+    }, [id]);
       return (
         <>
           {items.map((item) => (

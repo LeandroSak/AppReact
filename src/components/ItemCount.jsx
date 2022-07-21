@@ -16,15 +16,16 @@ const ItemCount = ({ stock }) => {
     }
     return (
         <>
-            <div className="d-flex justify-content-center input-group">
-                <Button onClick={() => updateCount("-")}>-</Button>
-                <p style={{fontSize:20, width:20, textAlign:"center"}}>{count}</p>
-                <input type="number" value={count} ></input>
-                <Button onClick={() => updateCount("+")}>+</Button>
-                <Button onClick={() => addCart()} type="button" disabled={count === "" || count === 0}>Agregar al carrito!</Button>
-           
+            <div className=" input-group" >
+                <button type="button" className="btn btn-secondary" onClick={() => updateCount("-")}>-</button>
+                <input value={count} style={{ width: "3rem" }} className="text-center" onChange={updateCount} ></input>
+                <button type="button" className="btn btn-secondary" onClick={() => updateCount("+")}>+</button>
             </div>
-            
+            <div style={{ marginTop: "5px" }}>
+                <button onClick={() => addCart()} type="button" className="btn btn-primary" style={{ width: "100%", marginTop: "10px" }} disabled={count<1}>Agregar al carrito!</button>
+
+            </div>
+
 
         </>
     );

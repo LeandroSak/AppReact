@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import ItemDetailContainer from "./ItemDetailContainer";
+
 
 
 const Item = ({ item }) => {
-  const { title, price, stock, image } = item;
+  const { id,title, price, stock, image } = item;
   
   return (
     <div className="card " style={{ width: "15rem", marginBottom: "25px" }}>
@@ -13,8 +15,9 @@ const Item = ({ item }) => {
       </div>
       
       <div className="d-flex justify-content-center" style={{ margin: "5px" }}>
+        <Link to={"/item/"+String(id)} element={<ItemDetailContainer />}>
         <button  type="button" className="btn btn-primary" >Descripcion</button>
-        
+        </Link>
       </div>
       <div className="card-footer text-muted">
       <p className="card-text text-center">{`${stock} unidades disponibles`}</p>

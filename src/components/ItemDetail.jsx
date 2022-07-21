@@ -1,18 +1,8 @@
 import { useState } from "react";
+import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ item }) => {
     const { title, price, stock, image , category , description} = item;
-    const [count, setCount] = useState(0);
-    const updateCount = (operation) => {
-        if (operation === "-" && count > 0) {
-            setCount(count - 1);
-        } else if (operation === "+" && count < stock) {
-            setCount(count + 1);
-        }
-    };
-    const addCart = () => {
-
-    }
     return (
         <div className="container">
             <div className="row d-flex justify-content-center">
@@ -29,15 +19,7 @@ const ItemDetail = ({ item }) => {
                     <div className="section " style={{ background:"#f8f9f9", marginLeft:"-12px",paddingLeft:"15px", paddingRight:"15px", paddingBottom:"30px", paddingTop:"20px"}}>
                         <h6 className="title-attr"><small>CANTIDAD</small></h6>
                         <p className="">{`${stock} unidades disponibles`}</p>
-                        <div className=" input-group" >
-                            <button type="button" className="btn btn-secondary" onClick={() => updateCount("-")}>-</button>
-                            <input value={count} style={{ width: "3rem" }} className="text-center" ></input>
-                            <button type="button"  className="btn btn-secondary" onClick={() => updateCount("+")}>+</button>
-                        </div>
-                        <div style={{ marginTop: "5px" }}>
-                            <button onClick={() => addCart()} type="button" className="btn btn-primary" style={{width:"100%", marginTop:"10px"}}>Agregar al carrito!</button>
-
-                        </div>
+                        <ItemCount stock={stock}/>
                     </div>
                 </div>
                 <div className="col-sm-10 ">
