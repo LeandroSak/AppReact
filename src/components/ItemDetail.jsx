@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
 
 const ItemDetail = ({ item }) => {
-    const { title, price, stock, image, category, description } = item;
+    const { id, title, price, stock, image, category, description } = item;
+
+    const { isInCart } = useContext(CartContext);
     const [amount, setAmount] = useState(0);
     const onAdd = (amount) => {
         setAmount(amount);
+        const totalStock = stock - amount;
+        item.stock = totalStock;
         alert("Se agregaron " + amount + " al carrito");
+        isInCart(item, amount);
     };
+    
+
     return (
         <div className="container">
             <div className="row d-flex justify-content-center">
@@ -26,7 +34,7 @@ const ItemDetail = ({ item }) => {
                         <h6 className="title-attr"><small>CANTIDAD</small></h6>
                         <p className="">{`${stock} unidades disponibles`}</p>
                         {amount === 0 ? (
-                            <ItemCount stock={stock} onAdd={onAdd}/>
+                            <ItemCount stock={stock} onAdd={onAdd} />
                         ) : (
                             <div>
                                 <h2> Se agregaron {amount} articulo(s)</h2>
