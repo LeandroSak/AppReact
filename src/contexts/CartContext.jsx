@@ -3,37 +3,44 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setItemCart] = useState([]);
 
   const addItem = (item, amount) => {
-
-    item.cantidad = amount;
-    setCartItems((prevState) => [...prevState, item]);
-  }
-  const isInCart = (item, amount) => {
-    for (let i = 0; i < cartItems.length; i++) {
-      if (cartItems[i].id === item.id) {
-        const total = item.cantidad + amount;
-        cartItems[i].cantidad = total;
-        return null;
-
-      }
+    const newItem = isInCart(item);
+    if (newItem) {
+      let total = amount + newItem.amount;
+      newItem.amount=total;
+      setItemCart(
+        cartItems.splice(
+          cartItems.findIndex((element) => element.id === item.id),
+          1
+        )
+      );
     }
-    addItem(item, amount);
-  }
+    item.amount=amount;
+    setItemCart([...cartItems,  item ]);
+  };
 
-  const removeItem = (item) =>{
-    for (let i = 0; i < cartItems.length; i++) {
+  const isInCart = (item) => {
+    return cartItems.find((element) => element.item === item);
+  };
 
-      if (cartItems[i].id === item.id) {
-        item.stock= item.stock+ cartItems[i].cantidad;
-        cartItems.splice(i, 1);
-      }
-    }
-  }
+  const clear = () => {
+    cartItems.forEach((item) => {
+      item.stock=item.stock+item.amount;
+    });
+    setItemCart([]);
+  };
 
+  const removeItem = (item,itemId) => {
+    let itemCart=cartItems.find((element) => element === item);
+    item.stock = item.stock+itemCart.amount;
+    setItemCart(cartItems.filter((element) => element.id !== itemId));
+  };
+
+  
   return (
-    <CartContext.Provider value={{ cartItems, isInCart }}>
+    <CartContext.Provider value={{ cartItems, removeItem, addItem , clear}}>
       {props.children}
     </CartContext.Provider>
   );

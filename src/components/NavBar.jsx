@@ -9,8 +9,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const NavBar = () => {
   return (
     <Navbar bg="warning" variant="light" style={{ marginBottom: "20px" }}>
-      <Container>
+      <Container >
         <Navbar.Brand >
+
           <Link to={"/"}>
             <img
               src={logo2}
@@ -21,17 +22,21 @@ const NavBar = () => {
             />
           </Link>
         </Navbar.Brand>
-        <Nav className="justify-content-center">
-          <NavDropdown title="Productos" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/">Todos los productos</NavDropdown.Item>
-            <NavDropdown.Item href="/category/Game Boy">Game Boy</NavDropdown.Item>
-            <NavDropdown.Item href="/category/Game Boy Color">Game Boy Color</NavDropdown.Item>
-            <NavDropdown.Item href="/category/Game Boy Advance">Game Boy Advance</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <CartWidget className="justify-content-end" />
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-center" >
+          <Nav >
+            <NavDropdown title="Productos" id="basic-nav-dropdown" >
+              <NavDropdown.Item ><Link to={"category/Game Boy"} style={{textDecoration:"none", color:"black"}}>Game Boy</Link>
+                </NavDropdown.Item>
+              <NavDropdown.Item ><Link to={"category/Game Boy Color"} style={{textDecoration:"none", color:"black"}}>Game Boy Color</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link to={"category/Game Boy Advance"} style={{textDecoration:"none", color:"black"}}>Game Boy Advance</Link></NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end" >
+          <CartWidget/>
+        </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </Navbar >
 
   );
 }

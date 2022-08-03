@@ -5,17 +5,16 @@ import { CartContext } from "../contexts/CartContext";
 
 const ItemDetail = ({ item }) => {
     const { id, title, price, stock, image, category, description } = item;
-
-    const { isInCart } = useContext(CartContext);
+    const { addItem } = useContext(CartContext);
     const [amount, setAmount] = useState(0);
     const onAdd = (amount) => {
         setAmount(amount);
         const totalStock = stock - amount;
         item.stock = totalStock;
         alert("Se agregaron " + amount + " al carrito");
-        isInCart(item, amount);
+        addItem(item, amount);
     };
-    
+
 
     return (
         <div className="container">
