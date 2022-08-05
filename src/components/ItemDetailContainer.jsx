@@ -1,35 +1,28 @@
-import api from "../data/api.json"
-import {useState , useEffect} from "react"
+
+import { useState, useEffect } from "react"
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
-    const [items, setItems] = useState([]);
-    const promise = new Promise((resolve) => {
-      setTimeout(() => resolve(api), 2000);
-    });
-  
-    useEffect(() => {
-      promise.then((res) => {
-        const products = res;
-        if (id) {
-          setItems(products.filter((product) => product.id == id));
-        } else {
-          setItems(products);
-        }
-      });
-    }, [id]);
-      return (
-        <>
-          {items.map((item) => (
-            
-              <ItemDetail key={item.id} item={item} />
-            
-          ))}
-        </>
-      )
-    };
+  const [items, setItems] = useState([]);
 
- 
+  useEffect(() => {
+    const db = getFirestore();
+    const itemDoc = doc(db, "items", id);
+    getDoc(itemDoc).then((snapshot) => {
+      setItems({ ...snapshot.data(), id: snapshot.id });
+
+    });
+  }, [id]);
+
+  return (
+    <>
+      <ItemDetail key={items.id} item={items} />
+    </>
+  )
+};
+
+
 export default ItemDetailContainer;
