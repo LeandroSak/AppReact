@@ -9,12 +9,10 @@ const ItemDetail = ({ item }) => {
     const [amount, setAmount] = useState(0);
     const onAdd = (amount) => {
         setAmount(amount);
-        const totalStock = stock - amount;
-        item.stock = totalStock;
+        
         alert("Se agregaron " + amount + " al carrito");
         addItem(item, amount);
     };
-
 
     return (
         <div className="container">
