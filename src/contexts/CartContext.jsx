@@ -9,27 +9,33 @@ import {
   getDocs,
   documentId,
 } from "firebase/firestore";
+import notie from 'notie';
 
 
 export const CartContext = createContext();
 
 const CartProvider = (props) => {
   const [cartItems, setItemCart] = useState([]);
+  const [orderId, setOrderId] = useState();
 
   const addItem = (item, amount) => {
     const newItem = isInCart(item);
+    
     if (newItem) {
       let total = amount += newItem.amount;
       newItem.amount = total;
+      notie.alert({ type: 'warning', text: "Se agrego cantidad del producto "+ item.title , time:2})
       setItemCart(
         cartItems.splice(
           cartItems.findIndex((element) => element.id === item.id),
           1
         )
       );
-    }
-    item.amount = amount;
+      addLocalStorage();
+    }item.amount = amount;
     setItemCart([...cartItems, item]);
+    notie.alert({ type: 'success', text: 'Se agrego al carrito el producto '+item.title, time: 2 })
+    addLocalStorage();
   };
 
   const isInCart = (item) => {
@@ -37,13 +43,14 @@ const CartProvider = (props) => {
   };
 
   const clear = () => {
-
     setItemCart([]);
+    notie.alert({ type: 'error', text: 'Se eliminaron todos los productos del carrito!', time:2 })
   };
 
   const removeItem = (item, itemId) => {
 
     setItemCart(cartItems.filter((element) => element.id !== itemId));
+    notie.alert({ type: 'error', text: 'Se elimino del carrito el producto '+item.title, time:2 })
   };
 
   const sendOrder = async (totalPrice, buyerData, time) => {
@@ -76,8 +83,9 @@ const CartProvider = (props) => {
     if (withoutStock.length === 0) {
       const addResponse = await addDoc(orderCollection, order);
       batch.commit();
-      clear();
-      alert(`Tu codigo de compra es: ${addResponse.id}`);
+      setOrderId(addResponse.id);
+      setItemCart([]);
+      localStorage.clear();
     } else {
       alert(
         "The purchase wasn't completed. There aren't enough items in stock"
@@ -85,8 +93,18 @@ const CartProvider = (props) => {
     }
   };
 
+  const addLocalStorage = () => {
+    localStorage.setItem('carrito', JSON.stringify(cartItems));
+  }
+  window.onload = function () {
+    const storage = JSON.parse(localStorage.getItem('carrito'));
+    if (storage) {
+      setItemCart(storage);
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, removeItem, addItem, clear, sendOrder}}>
+    <CartContext.Provider value={{ cartItems, removeItem, addItem, clear, sendOrder, orderId, addLocalStorage}}>
       {props.children}
     </CartContext.Provider>
   );

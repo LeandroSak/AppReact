@@ -18,16 +18,13 @@ const CartWidget = () => {
 
   return (
     <>
-      {cartItems.length === 0 ? (
-        <></>
-      ) : (
-
+      
         <div >
           <Link to="/cart" className="text-decoration-none text-dark">{totalPrice}
             <img style={{ width: 25 }} src={carrito} />
           </Link>
         </div>
-      )}
+      
     </>
   );
 

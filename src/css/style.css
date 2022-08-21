@@ -1,0 +1,59 @@
+.linkNav {
+    text-decoration: none;
+    color: black;
+}
+
+.linkNav:hover {
+    color: grey;
+}
+
+#nav-dropdown {
+    color: black;
+}
+
+#nav-dropdown:hover {
+    color: grey;
+}
+
+.notie-background-error {
+    background-color: #d12727;
+}
+
+.notie-background-success {
+    background-color: #31cc31;
+}
+.notie-background-warning {
+    background-color: #f8a92a; }
+
+.incorrecto{
+    margin-top: 20px;
+    color: red;
+}
+.formulario{
+    width: 90%;
+    padding: 10px;
+   margin: 20px;
+}
+.card{
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 1px #8998b0;
+}
+.table{
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 1px #8998b0;
+}
+.tbody,td{
+    border-style: none;
+}
+.div_formulario{
+    width: 60%;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 1px #8998b0;
+}
+.separador{
+    width: 60%;
+}
+.dropdown-menu{
+    background-color: #2DC3FF;
+}
