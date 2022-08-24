@@ -18,13 +18,13 @@ const CartWidget = () => {
 
   return (
     <>
-      
-        <div >
-          <Link to="/cart" className="text-decoration-none text-dark">{totalPrice}
-            <img style={{ width: 25 }} src={carrito} />
-          </Link>
-        </div>
-      
+
+      <div >
+        <Link to="/cart" className="text-decoration-none text-dark">{totalPrice}
+          <img style={{ width: 25 }} src={carrito} />
+        </Link>
+      </div>
+
     </>
   );
 

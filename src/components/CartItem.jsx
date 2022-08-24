@@ -1,5 +1,14 @@
+import { useContext, useEffect } from "react";
+import { CartContext } from "../contexts/CartContext";
+
 const CartItem = ({ item, removeItem }) => {
     const { id, title, price, amount, image } = item;
+    const { addLocalStorage, cartItems } = useContext(CartContext);
+
+    useEffect(() => {
+        addLocalStorage();
+    }, [cartItems]
+    );
     return (
         <>
             <td>

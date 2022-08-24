@@ -36,6 +36,7 @@ const Cart = () => {
         });
         setTotalPrice(total);
         setLoading(false);
+
     }, [cartItems]);
 
     return (
@@ -51,7 +52,7 @@ const Cart = () => {
                         <>
                             <div className="text-center">
                                 <h3>No hay items! Agrega algunos</h3>
-                                <Link to="/"><button  className="btn btn-primary">Inicio</button></Link>
+                                <Link to="/"><button className="btn btn-primary">Inicio</button></Link>
                             </div>
                         </>
                     ) : (
@@ -74,45 +75,10 @@ const Cart = () => {
                                     <button type="button" className="btn btn-danger " onClick={() => clear()}>Vaciar Carrito</button>
                                 </div>
                                 <div className="col-sm">
-                                    <h1 className="">{`Tu total es: $${totalPrice}`}</h1>
+                                    <h1 className="total">{`Tu total es: $${totalPrice}`}</h1>
                                 </div>
                             </div>
                             <div>
-                                
-                            </div>
-                            <div className="d-flex justify-content-center container div_formulario">
-                                <form onSubmit={handleSubmit} className=" text-center formulario">
-                                    <div className="mb-3 ">
-                                        <label className="form-label">Nombre</label>
-                                        <input type="text" className="form-control data" />
-
-                                    </div>
-
-                                    <div className="mb-3" >
-                                        <label className="form-label">Email</label>
-                                        <input id="id1" type="email" className="form-control data" />
-
-                                    </div>
-                                    <div className="mb-3" >
-                                        <label className="form-label">Confirmar Email</label>
-                                        <input id="id2" type="email" className="form-control" />
-
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <label className="form-label">DNI</label>
-                                        <input type="number" className="form-control data" required onInput={(e) => e.target.value = e.target.value.slice(0, 8)} />
-
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Telefono</label>
-                                        <input type="tel" className="form-control data" required maxLength={10} minLength={10}/>
-
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Comprar</button>
-                                </form>
-                            </div>
-                            <>
                                 {confirmacion === "error" ? (
                                     <div className="text-center">
                                         <h4 className="incorrecto">Confirmacion de email incorrecta, asegurece que los 2 email sean iguales!</h4>
@@ -120,7 +86,46 @@ const Cart = () => {
                                 ) : (
                                     <p></p>
                                 )}
-                            </>
+                            </div>
+                            <div className="d-flex justify-content-center container">
+                                <div className="d-flex justify-content-center  div_formulario">
+                                    <form onSubmit={handleSubmit} className=" text-center formulario">
+                                        <h3 >Datos del comprador</h3>
+                                        <div className="mb-3 ">
+                                            <label className="form-label">Nombre</label>
+                                            <input type="text" className="form-control data" />
+
+                                        </div>
+
+                                        <div className="mb-3" >
+                                            <label className="form-label">Email</label>
+                                            <input id="id1" type="email" className="form-control data" />
+
+                                        </div>
+                                        <div className="mb-3" >
+                                            <label className="form-label">Confirmar Email</label>
+                                            <input id="id2" type="email" className="form-control" />
+
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label className="form-label">DNI</label>
+                                            <input type="number" className="form-control data" required onInput={(e) => e.target.value = e.target.value.slice(0, 8)} />
+
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Telefono</label>
+                                            <input type="tel" className="form-control data" required maxLength={10} minLength={10} />
+
+                                        </div>
+                                        <button type="submit" className="btn btn-primary">Comprar</button>
+                                    </form>
+                                </div>
+
+                            </div>
+
+
+
                         </>
                     )}
                 </>

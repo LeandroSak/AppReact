@@ -20,22 +20,23 @@ const CartProvider = (props) => {
 
   const addItem = (item, amount) => {
     const newItem = isInCart(item);
-    
+
     if (newItem) {
       let total = amount += newItem.amount;
       newItem.amount = total;
-      notie.alert({ type: 'warning', text: "Se agrego cantidad del producto "+ item.title , time:2})
+      notie.alert({ type: 'warning', text: "Se agrego cantidad del producto " + item.title, time: 2 });
       setItemCart(
         cartItems.splice(
           cartItems.findIndex((element) => element.id === item.id),
           1
         )
       );
-      addLocalStorage();
-    }item.amount = amount;
+    } else {
+      notie.alert({ type: 'success', text: 'Se agrego al carrito el producto ' + item.title, time: 2 })
+    } item.amount = amount;
     setItemCart([...cartItems, item]);
-    notie.alert({ type: 'success', text: 'Se agrego al carrito el producto '+item.title, time: 2 })
-    addLocalStorage();
+
+
   };
 
   const isInCart = (item) => {
@@ -44,13 +45,13 @@ const CartProvider = (props) => {
 
   const clear = () => {
     setItemCart([]);
-    notie.alert({ type: 'error', text: 'Se eliminaron todos los productos del carrito!', time:2 })
+    notie.alert({ type: 'error', text: 'Se eliminaron todos los productos del carrito!', time: 2 })
   };
 
   const removeItem = (item, itemId) => {
 
     setItemCart(cartItems.filter((element) => element.id !== itemId));
-    notie.alert({ type: 'error', text: 'Se elimino del carrito el producto '+item.title, time:2 })
+    notie.alert({ type: 'error', text: 'Se elimino del carrito el producto ' + item.title, time: 2 })
   };
 
   const sendOrder = async (totalPrice, buyerData, time) => {
@@ -87,9 +88,7 @@ const CartProvider = (props) => {
       setItemCart([]);
       localStorage.clear();
     } else {
-      alert(
-        "The purchase wasn't completed. There aren't enough items in stock"
-      );
+      notie.alert({ type: 'error', text: 'No se encuetra stock', time: 2 })
     }
   };
 
@@ -104,7 +103,7 @@ const CartProvider = (props) => {
   }
 
   return (
-    <CartContext.Provider value={{ cartItems, removeItem, addItem, clear, sendOrder, orderId, addLocalStorage}}>
+    <CartContext.Provider value={{ cartItems, removeItem, addItem, clear, sendOrder, orderId, addLocalStorage }}>
       {props.children}
     </CartContext.Provider>
   );

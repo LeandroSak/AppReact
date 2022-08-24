@@ -1,6 +1,7 @@
 .linkNav {
     text-decoration: none;
     color: black;
+    font-weight: bold;
 }
 
 .linkNav:hover {
@@ -9,6 +10,8 @@
 
 #nav-dropdown {
     color: black;
+    font-weight: bold;
+
 }
 
 #nav-dropdown:hover {
@@ -22,38 +25,125 @@
 .notie-background-success {
     background-color: #31cc31;
 }
-.notie-background-warning {
-    background-color: #f8a92a; }
 
-.incorrecto{
+.notie-background-warning {
+    background-color: #f8a92a;
+}
+
+.incorrecto {
     margin-top: 20px;
     color: red;
 }
-.formulario{
-    width: 90%;
+
+.formulario {
+    width: 80%;
     padding: 10px;
-   margin: 20px;
+    margin: 20px;
 }
-.card{
+
+.card {
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 1px #8998b0;
+    width: 15rem;
+    margin-bottom: 25px;
+}
+
+.card-img-top {
+    width: 14.9rem;
+    height: 14.9rem;
+}
+
+.table {
     border-radius: 5px;
     box-shadow: 3px 3px 5px 1px #8998b0;
 }
-.table{
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px 1px #8998b0;
-}
-.tbody,td{
+
+.tbody,
+td {
     border-style: none;
 }
-.div_formulario{
-    width: 60%;
+
+.div_formulario {
+    width: 90%;
     margin-top: 20px;
     border-radius: 5px;
     box-shadow: 3px 3px 5px 1px #8998b0;
 }
-.separador{
+
+.separador {
     width: 60%;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     background-color: #2DC3FF;
+}
+
+.dropdown-item {
+    background-color: #2DC3FF;
+}
+
+.section {
+    background: #f8f9f9;
+    margin-left: -12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.boton1 {
+    width: 45%;
+    margin-top: 10px;
+}
+
+.boton2 {
+    width: 47%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.title-price {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.div_imagenDetalle {
+    border-right: 1px;
+    border-right-style: solid;
+    border-right-color: #f6f6f6;
+}
+
+.imageDetail {
+    width: 100%;
+    height: 25rem;
+}
+
+.menu-items {
+    list-style-type: none;
+    font-size: 20px;
+    display: inline-flex;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.description {
+    width: 100%;
+    border-top: 1px;
+    border-top-style: solid;
+    border-top-color: silver;
+}
+
+.purchase_element {
+    margin-top: 2rem;
+
+}
+
+.div_order {
+    margin-top: 4rem;
+}
+
+.total {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 3rem;
 }
